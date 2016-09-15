@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+        <title>Chunky Tuna inc. - Kawaii Garments</title>
+        <!--Slick's CSS-->
+        <link rel="stylesheet" type="text/css" href="./slick-1.6.0/slick/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="./slick-1.6.0/slick/slick-theme.css"/>
+        <!--fakeLoader's CSS-->
+        <link rel="stylesheet" type="text/css" href="./fakeLoader.js-master/fakeLoader.css">
+        <!--Custom CSS-->
+        <link rel="stylesheet" type="text/css" href="./css/main.css">
+    </head>
+    <body>
+        <div id="loading-screen"></div>
+        <div class="main">
+            <!--Header-->
+            <header class="" id="header">
+                <div class="logo">
+                    <img class="logo-img" src="./images/chunky-tuna-logo.jpg" alt="chunky-tuna-logo" ><span class="name">Chunky Tuna inc.</span>
+                </div>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a class="right-header" href="#Shop">Shop</a></li>
+                        <li><a class="right-header" href="#Gallery">Gallery</a></li>
+                        <li><a class="right-header" href="#Location">Location</a></li>
+                        <li>
+                            <a href="https://www.facebook.com/chunkytuna.inc/">
+                                <img class="fb-logo-img" src="./images/facebook-logo.png" alt="facebook-logo" width="20" height="20">
+                            </a>
+                        </li>   
+                        <li>
+                            <a href="https://www.instagram.com/chunkytuna.inc/">
+                                <img class="instagram-logo-img" src="./images/instagram-logo.png" alt="instagram-logo" width="20" height="20">
+                            </a>
+                        </li>
+                    </ul>
+                </nav> 
+            </header>
+        </div>
+        <div class='slider'>
+            <div class="item image1"><img src="./images/image1.jpg"></div>
+            <div class="item image2"><img src="./images/image3.jpg"></div>
+            <div class="item image3"><img src="./images/image4.jpg"></div>
+        </div>
+        <div class="featured-heading">
+            <h2 id="Shop">shop. (opening soon!)</h2>
+        </div>
+        <div>
+            <h2 id="Gallery">gallery.</h2>
+        </div>
+        <div id="wrap">
+            <div class="large-column">
+                <div class="small-image">
+                    <img src="./images/gallery/image1.jpg" alt="">
+                    <img src="./images/gallery/image2.jpg" alt="">
+                    <img src="./images/gallery/image3.jpg" alt="">
+                    <img src="./images/gallery/image4.jpg" alt="">
+                </div>
+                <div class="medium-image">  
+                    <img src="./images/gallery/image5.jpg" alt="">
+                    <img src="./images/gallery/image6.jpg" alt="">
+                </div>
+                <div class="small-image">
+                    <img src="./images/gallery/image7.jpg" alt="">
+                    <img src="./images/gallery/image8.jpg" alt="">
+                    <img src="./images/gallery/image9.jpg" alt="">
+                    <img src="./images/gallery/image11.jpg" alt="">
+                </div>  
+            </div>
+            <div class="large-image">
+                <img src="./images/gallery/image10.jpg" alt="">
+            </div>
+            <div class="small-column small-image">
+                <img src="./images/gallery/image12.jpg" alt="">
+                <img src="./images/gallery/image13.jpg" alt="">
+                <img src="./images/gallery/image1.jpg" alt="">
+                <img src="./images/gallery/image2.jpg" alt="">
+            </div>
+            <div class="medium-column medium-image">
+                <img src="./images/gallery/image3.jpg" alt="">
+                <img src="./images/gallery/image4.jpg" alt="">
+            </div>
+            <div class="small-column small-image">
+                <img src="./images/gallery/image5.jpg" alt="">
+                <img src="./images/gallery/image6.jpg" alt="">
+                <img src="./images/gallery/image7.jpg" alt="">
+                <img src="./images/gallery/image8.jpg" alt="">
+            </div>
+        </div>
+
+        <div>
+            <h2 id="Location">location.</h2>
+        </div>
+    <div id="floating-panel">
+      <input id="address" type="textbox" value="Sydney, NSW">
+      <input id="submit" type="button" value="Geocode">
+    </div>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 8,
+          center: {lat: -34.397, lng: 150.644}
+        });
+        var geocoder = new google.maps.Geocoder();
+
+        document.getElementById('submit').addEventListener('click', function() {
+          geocodeAddress(geocoder, map);
+        });
+      }
+
+      function geocodeAddress(geocoder, resultsMap) {
+        var address = document.getElementById('address').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: resultsMap,
+              position: results[0].geometry.location
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+    </script>
+    
+        <!--jQuery's script-->
+        <script type="text/javascript" src="./node_modules/jquery/dist/jquery.min.js"></script>
+        <!--slick-plugin's script-->
+        <script type="text/javascript" src="./slick-1.6.0/slick/slick.min.js"></script>
+        <!--fakeloader-plugin's script-->
+        <script type="text/javascript" src="./fakeLoader.js-master/fakeLoader.js"></script>
+        <!--main-script-->
+        <script type="text/javascript" src="./script/main-script.js"></script>
+        <script async defer
+             src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCUuWkSNfktsX0p9866c3TumkJxJvN06QQ&callback=initMap">
+        </script>
+    </body>
+</html>
+
